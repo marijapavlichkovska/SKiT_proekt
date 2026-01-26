@@ -1,0 +1,26 @@
+{
+  "name": "wp-2024-main",
+  "version": "1.0.0",
+  "description": "- Ana Todorovska MSc - Darko Sasanski - Elena Atanasoska",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "pw:saucedemo": "playwright test tests/playwright/saucedemo",
+    "pw:automation": "playwright test tests/playwright/automationexercise",
+    "pw:mvc": "playwright test tests/playwright/mvc-app",
+
+    "tc:saucedemo": "testcafe chrome tests/testcafe/saucedemo",
+    "tc:automation": "testcafe chrome tests/testcafe/automationexercise",
+    "tc:mvc": "testcafe chrome tests/testcafe/mvc-app"
+  }
+,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "testcafe": "^3.7.4"
+  }
+}
