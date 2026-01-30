@@ -12,36 +12,55 @@
 - **URL**: https://automationexercise.com/
 - **Опис**: E-commerce платформа за практикување автоматизирано тестирање
 - **Тестирани функционалности**:
-  - Регистрација и креирање на корисничка сметка
-  - Прегледување производи по категорија и бренд
-  - Пребарување, преглед и рецензии на производи
-  - Додавање производи во кошничка
-  - Checkout процес
-  - Контакт форма
-  - Претплата на newsletter
-  - Logout функционалност
+  1. Регистрација на нов корисник
+  2. Преглед на производи по категорија
+  3. Преглед на производи по бренд
+  4. Пребарување, преглед и рецензија на производи
+  5. Додавање на еден производ во кошничка
+  6. Додавање на повеќе производи во кошничка
+  7. Додавање на производ од препорачани производи
+  8. Checkout процес
+  9. Додавање и отстранување на производ од кошничка
+  10. Контакт форма
+  11. Претплата (Subscribe)
+  12. Logout
+  13. Креирање и бришење на корисничка сметка
 
 ### 2. SauceDemo
 - **URL**: https://www.saucedemo.com/
 - **Опис**: Demo апликација за тестирање на e-commerce функционалности
 - **Тестирани функционалности**:
-  - Најава со различни типови на корисници
-  - Валидација на пристап без најава
-  - Додавање и отстранување производи од кошничка
-  - Сортирање на производи по цена
-  - Комплетен checkout процес
-  - Преглед на детали за производи
-  - Ресетирање на апликацијата
+  1. Добивање на порака дека не може да се пристапи до inventory страницата без најава
+  2. Најава без податоци и добивање на error порака
+  3. Најава со невалидни податоци и добивање на error порака
+  4. Додавање на производ во кошничка и проверка на бројот на производи
+  5. Отстранување на производ од кошничката и проверка на бројот
+  6. Додавање на производ во кошничка и отстранување од главната страница
+  7. Додавање на производ, одење до checkout, враќање назад и додавање на повеќе производи
+  8. Сортирање на производи по цена (од најниска до највисока)
+  9. Отворање на детали за производ и враќање на главната страница
+  10. Одење до кошничка, кликнување на checkout и внесување на податоци за картичка
+  11. Откажување на checkout и враќање до кошничката
+  12. Кликнување на About од навигацискиот мени
+  13. Кликнување на Reset App State од навигацискиот мени
 
 ### 3. Spring Boot MVC Shop (Локална апликација)
 - **Опис**: Локална Spring Boot апликација за управување со продавница
 - **Тестирани функционалности**:
-  - Регистрација на нови корисници
-  - Најава како администратор и обичен корисник
-  - Креирање, уредување и бришење на производи (Admin)
-  - Контрола на пристап (Authorization)
-  - Додавање производи во кошничка
-  - Пребарување на производи по име, категорија и производител
+  1. Регистрација на нов корисник
+  2. Најава како постоечки корисник и logout
+  3. Најава како администратор и logout
+  4. Најава со непостоечка сметка и добивање на BadCredentials порака
+  5. Обид за креирање на производ како обичен корисник и добивање на access refused порака
+  6. Креирање на нов производ како администратор
+  7. Креирање на повеќе производи како администратор
+  8. Уредување на постоечки производ како администратор
+  9. Бришење на производ како администратор
+  10. Додавање на производ во кошничка како администратор и верификација
+  11. Додавање на производ во кошничка како корисник и верификација
+  12. Пребарување на производ по име и испис во конзола дали постои
+  13. Пребарување на производ по категорија и испис во конзола дали постои
+  14. Пребарување на производ по производител и испис во конзола дали постои
 
 ## Testing Frameworks
 
@@ -58,25 +77,28 @@
 ## Структура на проектот
 
 ```
-├── playwright/
-│   ├── automationexercise-tests.js
-│   ├── saucedemo-tests.js
-│   └── spring-boot-shop-tests.js
-├── testcafe/
-│   ├── automationexercise-tests.js
-│   ├── saucedemo-tests.js
-│   └── spring-boot-shop-tests.js
-├── config/
-│   └── environments.js
+├── playwright-report/
 ├── results/
+├── src/
+├── target/
+├── test-results/
+├── tests/
+│   ├── config/
+│   │   └── environments.js
 │   ├── playwright/
-│   │   ├── automationexercise-results/
-│   │   ├── saucedemo-results/
-│   │   └── spring-boot-results/
+│   │   ├── automationexercise/
+│   │   ├── mvc-app/
+│   │   └── saucedemo/
 │   └── testcafe/
-│       ├── automationexercise-results/
-│       ├── saucedemo-results/
-│       └── spring-boot-results/
+│       ├── automationexercise/
+│       ├── mvc-app/
+│       └── saucedemo/
+├── mvnw
+├── mvnw.cmd
+├── package.json
+├── package-lock.json
+├── playwright.config.js
+├── pom.xml
 └── README.md
 ```
 
@@ -106,7 +128,7 @@ npm install -g testcafe
 ### За Spring Boot апликацијата:
 - Java 11 или повисока верзија
 - Maven
-- Апликацијата треба да работи на `http://localhost:8080`
+- Апликацијата треба да работи на `http://localhost:9090`
 
 ## Извршување на тестовите
 
@@ -114,37 +136,37 @@ npm install -g testcafe
 
 ```bash
 # AutomationExercise
-npx playwright test automationexercise-tests.js
+npx playwright test tests/playwright/automationexercise/
 
 # SauceDemo
-npx playwright test saucedemo-tests.js
+npx playwright test tests/playwright/saucedemo/
 
-# Spring Boot Shop
-npx playwright test spring-boot-shop-tests.js
+# Spring Boot MVC Shop
+npx playwright test tests/playwright/mvc-app/
 ```
 
 ### TestCafe тестови:
 
 ```bash
 # AutomationExercise
-testcafe chrome automationexercise-tests.js
+testcafe edge tests/testcafe/automationexercise/
 
 # SauceDemo
-testcafe chrome saucedemo-tests.js
+testcafe edge tests/testcafe/saucedemo/
 
-# Spring Boot Shop
-testcafe chrome spring-boot-shop-tests.js
+# Spring Boot MVC Shop
+testcafe edge tests/testcafe/mvc-app/
 ```
 
 ## Конфигурација
 
-Конфигурацијата за URL адресите се наоѓа во `config/environments.js`. Пред извршување на тестовите за Spring Boot апликацијата, проверете дали URL адресата е правилно поставена.
+Конфигурацијата за URL адресите се наоѓа во `tests/config/environments.js`. Пред извршување на тестовите за Spring Boot апликацијата, проверете дали URL адресата е правилно поставена.
 
 ```javascript
 module.exports = {
     automationexercise: 'https://automationexercise.com',
     saucedemo: 'https://www.saucedemo.com',
-    mvc: 'http://localhost:8080'  // Ажурирајте ја оваа адреса според вашата конфигурација
+    mvc: 'http://localhost:9090'
 };
 ```
 
@@ -152,12 +174,4 @@ module.exports = {
 
 - Тестовите за AutomationExercise содржат логика за справување со реклами и overlay елементи
 - SauceDemo тестовите користат различни test корисници со специфични поведувања
-- Spring Boot тестовите бараат активна локална инстанца на апликацијата
-
-## Автор
-
-Овој проект е развиен како дел од предметот **Софтверски квалитет и тестирање**.
-
-## Датум
-
-Јануари 2026
+- Spring Boot тестовите бараат активна локална инстанца на апликацијата со цел истите да работат
