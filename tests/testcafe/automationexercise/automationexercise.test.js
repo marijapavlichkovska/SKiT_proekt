@@ -57,7 +57,7 @@ const safeClick = async (t, selector, timeout = 15000) => {
             try {
                 await t.scrollIntoView(selector);
                 await t.click(selector);
-                return; // success
+                return;
             } catch (err) {
 
             }
@@ -179,7 +179,7 @@ export const scrollIntoView = async (t, selector, timeout = 15000) => {
         const disabled = await selector.hasAttribute('disabled');
 
         if (exists && visible && !disabled) {
-            await t.scrollIntoView(selector); // no offset
+            await t.scrollIntoView(selector);
             return;
         }
 
@@ -644,3 +644,4 @@ test('Create Account and Delete Account', async t => {
 
     await t.expect(Selector('*').withText('ACCOUNT DELETED').exists).ok({ timeout: 15000 });
 });
+
