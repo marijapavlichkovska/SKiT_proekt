@@ -203,21 +203,17 @@ test.describe('AutomationExercise - Playwright', () => {
 
     //7. add product from recommended
     test('Add to cart from Recommended Items', async ({ page }) => {
-        // 1 & 2. Launch browser and navigate
         await page.goto(env.automationexercise);
 
-        // 3. Scroll to bottom of page
         const footer = page.locator('#footer');
         await footer.scrollIntoViewIfNeeded();
 
-        // 4. Verify 'RECOMMENDED ITEMS' are visible
         const recommendedSection = page.locator('.recommended_items');
         await expect(recommendedSection).toBeVisible();
         await expect(
             recommendedSection.getByText('Recommended Items', { exact: false })
         ).toBeVisible();
 
-        // 5. Click on 'Add To Cart' on a Recommended product
         const firstRecommendedProduct = recommendedSection
             .locator('.productinfo')
             .first();
@@ -228,10 +224,8 @@ test.describe('AutomationExercise - Playwright', () => {
             .locator('.add-to-cart')
             .click();
 
-        // 6. Click on 'View Cart' button
         await page.getByRole('link', { name: /View Cart/i }).click();
 
-        // 7. Verify that product is displayed in cart page
         await expect(page).toHaveURL(/view_cart/);
         await expect(page.locator('.cart_info')).toBeVisible();
         await expect(page.locator('.cart_info tbody tr')).toHaveCount(1);
@@ -441,3 +435,4 @@ test.describe('AutomationExercise - Playwright', () => {
     });
 
 });
+
