@@ -134,29 +134,71 @@ npm install -g testcafe
 
 ### Playwright тестови:
 
+**Преку терминал:**
 ```bash
-# AutomationExercise
+# AutomationExercise (13 тестови)
 npx playwright test tests/playwright/automationexercise/
 
-# SauceDemo
+# SauceDemo (13 тестови)
 npx playwright test tests/playwright/saucedemo/
 
-# Spring Boot MVC Shop
+# Spring Boot MVC Shop (14 тестови)
 npx playwright test tests/playwright/mvc-app/
+```
+
+**Преку npm scripts:**
+```bash
+# AutomationExercise
+npm run pw:automation
+
+# SauceDemo
+npm run pw:saucedemo
+
+# Spring Boot MVC Shop
+npm run pw:mvc
 ```
 
 ### TestCafe тестови:
 
+**Преку терминал:**
+```bash
+# AutomationExercise (13 тестови)
+npx testcafe edge tests/testcafe/automationexercise/
+
+# SauceDemo (13 тестови)
+npx testcafe edge tests/testcafe/saucedemo/
+
+# Spring Boot MVC Shop (14 тестови)
+npx testcafe edge tests/testcafe/mvc-app/
+```
+
+**Преку npm scripts:**
 ```bash
 # AutomationExercise
-testcafe edge tests/testcafe/automationexercise/
+npm run tc:automation
 
 # SauceDemo
-testcafe edge tests/testcafe/saucedemo/
+npm run tc:saucedemo
 
 # Spring Boot MVC Shop
-testcafe edge tests/testcafe/mvc-app/
+npm run tc:mvc
 ```
+
+### Достапни npm scripts:
+
+Проектот содржи предефинирани npm scripts во `package.json` за полесно извршување на тестовите:
+
+**Playwright:**
+- `npm run pw:automation` - Автоматизација на AutomationExercise тестовите
+- `npm run pw:saucedemo` - Автоматизација на SauceDemo тестовите
+- `npm run pw:mvc` - Автоматизација на MVC апликацијата тестовите
+
+**TestCafe:**
+- `npm run tc:automation` - Автоматизација на AutomationExercise тестовите
+- `npm run tc:saucedemo` - Автоматизација на SauceDemo тестовите
+- `npm run tc:mvc` - Автоматизација на MVC апликацијата тестовите
+
+**Забелешка:** Сите TestCafe тестови се конфигурирани да се извршуваат на Microsoft Edge browser.
 
 ## Конфигурација
 
