@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const env = require('../../config/environments');
 
 function generateRandomEmail() {
-    const randomStr = Math.random().toString(36).substring(2, 10); // 8 chars
+    const randomStr = Math.random().toString(36).substring(2, 10);
     return `${randomStr}@mail.com`;
 }
 
@@ -14,7 +14,6 @@ const password = 'Test123@';
 
 test.describe('AutomationExercise - Playwright', () => {
     test.beforeEach(async ({ page }) => {
-        // Block popup tabs opened by ads
         page.on('popup', async popup => {
             await popup.close();
         });
@@ -435,4 +434,5 @@ test.describe('AutomationExercise - Playwright', () => {
     });
 
 });
+
 
